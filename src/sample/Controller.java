@@ -102,10 +102,26 @@ public class Controller implements Initializable {
         } else if (event.getSource() == dot) {
             display2.setText(display2.getText() + ".");
         }
+        else if (event.getSource() == minus) {
+            if (display2.getText().equals("")&&operation1 == -1) {
+                display2.setText("-");
+            } else if(operation2 == -1){
+                try{
+                    data = Float.parseFloat(display2.getText());
+                    display1.setText(display2.getText());
+                    operation1 = 2; //Subtraction
+                    display2.setText("");
+                }
+                catch (Exception e){
+                    System.out.println("error4");
+                    operation1 = 2;
+                }
+            }
+        }
         else if (event.getSource() == ac) {
             operation1 = -1;
             operation2 = -1;
-            display2.setText("");
+            display2.setText("0");
             display1.setText("");
         }
         else if (event.getSource() == del) {
@@ -143,21 +159,7 @@ public class Controller implements Initializable {
                 operation1 = 1; //Addition
                 display2.setText("");
             }
-            else if (event.getSource() == minus) {
-                if (display2.getText().equals("")) {
 
-                } else {
-                    try{
-                        data = Float.parseFloat(display2.getText());
-                        display1.setText(display2.getText());
-                    }
-                    catch (Exception e){
-                        System.out.println("error4");
-                    }
-                }
-                operation1 = 2; //Subtraction
-                display2.setText("");
-            }
             else if (event.getSource() == multiply) {
                 if (display2.getText().equals("")) {
 
