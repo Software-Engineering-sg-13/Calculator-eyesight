@@ -79,31 +79,111 @@ public class Controller implements Initializable {
     @FXML
     void handleButtonAction(ActionEvent event) {
         String str;
+
         if (event.getSource() == one) {
-            display2.setText(display2.getText() + "1");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "1");
+            }
+            else{
+                display2.setText("1");
+            }
         } else if (event.getSource() == two) {
-            display2.setText(display2.getText() + "2");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "2");
+            }
+            else{
+                display2.setText("2");
+            }
         } else if (event.getSource() == three) {
-            display2.setText(display2.getText() + "3");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "3");
+            }
+            else{
+                display2.setText("3");
+            }
         } else if (event.getSource() == four) {
-            display2.setText(display2.getText() + "4");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "4");
+            }
+            else{
+                display2.setText("4");
+            }
         } else if (event.getSource() == five) {
-            display2.setText(display2.getText() + "5");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "5");
+            }
+            else{
+                display2.setText("5");
+            }
         } else if (event.getSource() == six) {
-            display2.setText(display2.getText() + "6");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "6");
+            }
+            else{
+                display2.setText("6");
+            }
         } else if (event.getSource() == seven) {
-            display2.setText(display2.getText() + "7");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "7");
+            }
+            else{
+                display2.setText("7");
+            }
         } else if (event.getSource() == eight) {
-            display2.setText(display2.getText() + "8");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "8");
+            }
+            else{
+                display2.setText("8");
+            }
         } else if (event.getSource() == nine) {
-            display2.setText(display2.getText() + "9");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "9");
+            }
+            else{
+                display2.setText("9");
+            }
         } else if (event.getSource() == zero) {
-            display2.setText(display2.getText() + "0");
+            if(!display2.getText().equals("0")){
+
+                display2.setText(display2.getText() + "0");
+            }
         } else if (event.getSource() == dot) {
-            display2.setText(display2.getText() + ".");
+            String vtr = (display2.getText()).toString();
+            try{
+                data = Float.parseFloat(display2.getText());
+                if(Math.floor(data) == data||display2.getText()==""){
+                    if(vtr.indexOf('.')==-1){
+                        display2.setText(display2.getText() + ".");
+                    }
+                }
+            }
+            catch(Exception e){
+                if(vtr.indexOf('.')==-1){
+                    display2.setText(display2.getText() + ".");
+                }
+                System.out.println("ERROR OF .");
+            }
+
         }
         else if (event.getSource() == minus) {
-            if (display2.getText().equals("")&&operation1 == -1) {
+            try{
+
+                data = Float.parseFloat(display2.getText());
+            }
+            catch(Exception e){
+                System.out.println("NewERROR");
+            }
+            if ((display2.getText().equals("")||data==0)&&operation1 == -1) {
                 display2.setText("-");
             } else if(operation2 == -1){
                 try{
@@ -243,8 +323,9 @@ public class Controller implements Initializable {
                 else{
                     try{
                         eye = Float.parseFloat(display2.getText());
-                        display1.setText("Maximum distance you can see");
-                        float res = eye + data;
+                        display1.setText("Maximum distance you can see(cm)");
+                        float pink = Math.min(Math.abs(eye),Math.abs(data));
+                        float res = 1/pink;
                         display2.setText(String.valueOf(res));
                     }
                     catch(Exception e){
