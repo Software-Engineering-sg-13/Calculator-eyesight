@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    float newdata;
     float data = 0f;
     float eye = 0f;
     int operation1 = -1;
@@ -310,7 +311,7 @@ public class Controller implements Initializable {
             if (event.getSource() == eq) {
                 if(operation2 == 1){
                     try{
-                        data = Float.parseFloat(display2.getText());
+                       newdata = Float.parseFloat(display2.getText());
                         operation1 = -1;
                         operation2 = 2;
                         display1.setText("Enter Right Eye Sight");
@@ -322,10 +323,20 @@ public class Controller implements Initializable {
                 }
                 else{
                     try{
+                        System.out.println(newdata+"wha1");
+                        System.out.println(data+"what2");
+                        float pink ;
                         eye = Float.parseFloat(display2.getText());
                         display1.setText("Maximum distance you can see(cm)");
-                        float pink = Math.min(Math.abs(eye),Math.abs(data));
-                        float res = 1/pink;
+                        if(Math.abs(newdata - eye) < 0.0000001){
+                            pink = Math.abs(eye);
+                        }
+                        else{
+
+                            pink = Math.min(Math.abs(eye),Math.abs(newdata));
+                        }
+                        float res = 100/pink;
+                        System.out.println(pink);
                         display2.setText(String.valueOf(res));
                     }
                     catch(Exception e){
